@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Praneet Sivakumar · Data Analyst</title>
+<meta name="description" content="Praneet Sivakumar, Data Analyst. From the retail shop floor to the data behind it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="loader" id="loader"><span>SELECT * FROM praneet;</span></div>
+
+<header class="topbar">
+  <a href="#top" class="brand">Praneet S<span>.</span></a>
+  <div class="clock"><span id="clock">--</span> · Hatfield, UK</div>
+  <nav class="menu">
+    <a href="#story">Story</a><a href="#console">Console</a><a href="#work">Work</a><a href="#desk">Desk</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <h1 class="wordmark" aria-label="Praneet Sivakumar">
+    <span class="wm-line"><span class="wm">PRANEET</span></span>
+    <span class="wm-line"><span class="wm">SIVAKUMAR</span></span>
+  </h1>
+  <div class="hero-grid">
+    <p class="two-tone hero-line"><b>Data Analyst</b> turning shop-floor reality into <b>numbers you can trust.</b></p>
+    <figure class="hero-photo"><img src="images/hero.jpg" alt="Portrait of Praneet Sivakumar" loading="eager"></figure>
+    <div class="hero-side">
+      <p>MSc Data Science<br><b>Distinction</b></p>
+      <p>SQL · Power BI<br>Python · Excel</p>
+      <p class="status"><i></i> Open to Data Analyst roles</p>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll to read the story <span>↓</span></div>
+</section>
+
+<!-- CHAPTER 1 -->
+<section class="chapter" id="story">
+  <div class="ch-head"><span class="ch-num">01</span><span class="ch-title">The shop floor</span></div>
+  <div class="ch-grid">
+    <p class="focus-text">Most analysts meet data on a screen. I met it on the shop floor. Two years at Tesco and now M&amp;S, where every cancelled order, empty shelf and long queue becomes a number in someone's report.</p>
+    <figure class="ch-photo parallax"><img src="images/shop-floor.jpg" alt="Praneet in black and white" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- CHAPTER 2 -->
+<section class="chapter">
+  <div class="ch-head"><span class="ch-num">02</span><span class="ch-title">The second story</span></div>
+  <div class="ch-grid reverse">
+    <div class="receipt" aria-label="Illustrated receipt">
+      <div class="receipt-head">STORE #0423 · HATFIELD<br>17:04 · TILL 3</div>
+      <div class="r-row"><span>Croissant x6</span><span>OUT OF STOCK</span></div>
+      <div class="r-row"><span>Online order #4471</span><span class="warn">CANCELLED</span></div>
+      <div class="r-row"><span>Substitution: shampoo</span><span>REFUND</span></div>
+      <div class="r-row"><span>Queue at till</span><span>9 people</span></div>
+      <div class="r-cut"><span>THE SECOND STORY</span></div>
+      <div class="r-row data"><span>cancel_rate</span><span>7.5%</span></div>
+      <div class="r-row data"><span>top_category</span><span>Health &amp; Beauty</span></div>
+      <div class="r-row data"><span>recommendation</span><span>fix stock first</span></div>
+    </div>
+    <div>
+      <p class="focus-text">Every receipt tells two stories. One is what the customer bought. The other is everything that went right or wrong to get it there. I learned to read the second one.</p>
+      <p class="body">An <b>MSc in Data Science with Distinction</b>, earned while working shifts. Then a six-month internship at <b>Atheon Analytics</b>, writing SQL on a live database and reconciling the sales, revenue and cost figures the business reported on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 3: 3D -->
+<section class="chapter dark" id="wrong">
+  <div class="ch-head"><span class="ch-num">03</span><span class="ch-title">The wrong number</span></div>
+  <div class="wrong-wrap">
+    <canvas id="bars"></canvas>
+    <div class="wrong-copy">
+      <p class="focus-text light">AI can write a query in seconds. It can't tell you which number is wrong, or why.</p>
+      <p class="wrong-hint" id="wrong-hint"><i></i> One bar is wrong. <b>Keep scrolling to fix it.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <p class="big-1">SMALL NUMBERS.</p>
+  <p class="big-2">BIG DECISIONS.</p>
+</section>
+
+<!-- CONSOLE -->
+<section class="chapter" id="console">
+  <div class="ch-head"><span class="ch-num">04</span><span class="ch-title">Ask my data</span></div>
+  <p class="lede">Don't take my word for it. Click a question and run the query on my retail project (sample retail dataset, 15,000+ rows).</p>
+  <div class="console">
+    <div class="console-bar"><i></i><i></i><i></i><span>praneet@analytics: ~/retail_orders.sql</span></div>
+    <div class="console-q">
+      <button data-q="0">Why are orders cancelled?</button>
+      <button data-q="1">Do loyalty members spend more?</button>
+      <button data-q="2">When is the peak?</button>
+      <button data-q="3">Who is Praneet?</button>
+    </div>
+    <pre class="console-out" id="console-out"><span class="muted">-- pick a question above to run a query</span></pre>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="chapter" id="work">
+  <div class="ch-head"><span class="ch-num">05</span><span class="ch-title">Where I've worked</span></div>
+  <div class="jobs">
+    <article class="job">
+      <div class="job-top"><span class="job-date">Jan – Jun 2026</span><span class="job-lens">Questions → answers</span></div>
+      <h3>Atheon Analytics <em>Data Analyst Intern</em></h3>
+      <p>"Can we trust this data?" SQL ETL on a live database with checks at every step. "Why does this report take so long?" A live Power BI dashboard: <b>about 30% less reporting time</b>. "Why don't these numbers match?" Sales, revenue and cost figures reconciled and traced to the source.</p>
+      <div class="tags"><span>SQL</span><span>ETL</span><span>Power BI</span><span>Python</span></div>
+    </article>
+    <article class="job">
+      <div class="job-top"><span class="job-date">Oct 2026 – now</span><span class="job-lens">A forecasting problem</span></div>
+      <h3>M&amp;S <em>Customer Assistant, In-Store Bakery</em></h3>
+      <p>Bake too much: waste at closing. Bake too little: an empty shelf at lunch. Every day I see how close the forecast gets to reality.</p>
+    </article>
+    <article class="job">
+      <div class="job-top"><span class="job-date">Oct 2024 – Oct 2026</span><span class="job-lens">The store as a dataset</span></div>
+      <h3>Tesco <em>Customer Fulfilment &amp; Service Assistant</em></h3>
+      <p>Online orders, tills and stock in a team of 10+, where one missing item means a cancelled order. That question became my retail project.</p>
+    </article>
+    <article class="job">
+      <div class="job-top"><span class="job-date">Jan – Aug 2024</span><span class="job-lens">Input → process → output</span></div>
+      <h3>ByVal Technologies <em>Software Development Intern</em></h3>
+      <p>Python scripts combining 3+ systems (<b>about 25% less manual work</b>) and SQL optimised on 100,000+ records.</p>
+      <div class="tags"><span>Python</span><span>SQL</span><span>Pipelines</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- DESK -->
+<section class="chapter" id="desk">
+  <div class="ch-head"><span class="ch-num">06</span><span class="ch-title">My desk</span></div>
+  <div class="desktop">
+    <div class="widget date-w"><span class="dw-day" id="dw-day">MON</span><span class="dw-num" id="dw-num">1</span><span class="dw-txt">Available for interviews</span></div>
+    <div class="widget photo-w"><img src="images/presenting.jpg" alt="Praneet speaking at his graduation" loading="lazy"><span>Graduation · MSc Data Science, Distinction</span></div>
+
+    <div class="folders">
+      <a class="folder" href="#case1"><span class="f-icon"></span>Case 01<br><small>Retail project</small></a>
+      <a class="folder" href="#case2"><span class="f-icon gold"></span>Case 02<br><small>In progress</small></a>
+      <a class="folder" href="Praneet_Sivakumar_CV.pdf" download><span class="f-icon doc"></span>CV.pdf<br><small>Download</small></a>
+    </div>
+
+    <div class="apps">
+      <div class="app"><span class="a-icon" style="--c:#7c3aed">🎓</span><b>MSc Distinction</b><small>Univ. of Hertfordshire</small></div>
+      <div class="app"><span class="a-icon" style="--c:#f59e0b">☁️</span><b>AWS Certified</b><small>Solutions Architect – Associate</small></div>
+      <div class="app"><span class="a-icon" style="--c:#2563eb">📊</span><b>−30%</b><small>reporting time, Power BI</small></div>
+      <div class="app"><span class="a-icon" style="--c:#16a34a">⚙️</span><b>−25%</b><small>manual work, Python</small></div>
+      <div class="app"><span class="a-icon" style="--c:#dc2626">🧾</span><b>15,000+</b><small>transactions analysed</small></div>
+      <div class="app"><span class="a-icon" style="--c:#0f172a">🧭</span><b>Next: dbt + BigQuery</b><small>Analytics Engineer path</small></div>
+    </div>
+  </div>
+
+  <div class="cases">
+    <article class="case" id="case1">
+      <span class="case-tag">Case 01 · Retail project · Complete</span>
+      <h3>The Case of the Cancelled Orders</h3>
+      <p class="case-q">1 in 13 online orders never reached the customer. Why?</p>
+      <dl>
+        <dt>Data</dt><dd>15,000+ transactions, £72k revenue, 8 stores (sample retail dataset)</dd>
+        <dt>Approach</dt><dd>Cleaned and explored in Python (Pandas); cancellations by category and month</dd>
+        <dt>Answer</dt><dd>Health &amp; Beauty cancelled most, at 10%. Loyalty members spend 8% more; December runs 21% above average</dd>
+        <dt>Output</dt><dd>5-view Tableau dashboard with stock and promotion recommendations</dd>
+      </dl>
+      <a href="https://github.com/Prani8" target="_blank" rel="noopener">View on GitHub →</a>
+    </article>
+    <article class="case upcoming" id="case2">
+      <span class="case-tag gold">Case 02 · In progress</span>
+      <h3>Retail Analytics Engineering Pipeline</h3>
+      <p class="case-q">From raw retail data to a tested, trusted model, then to a decision.</p>
+      <div class="pipe"><span>Raw data</span>→<span>BigQuery</span>→<span>dbt + tests</span>→<span>Power BI</span>→<span>Insight</span></div>
+      <div class="bar"><i style="--p:15%"></i></div>
+      <small>Building now. Follow along on GitHub.</small>
+    </article>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <figure class="contact-photo"><img src="images/building.jpg" alt="Praneet Sivakumar" loading="lazy"></figure>
+  <div>
+    <p class="two-tone big"><b>Give me a messy dataset</b> and a real business question.</p>
+    <p class="body">I'll come back with an answer you can trust.</p>
+    <div class="cta">
+      <a class="btn" href="mailto:praneetsivakumar@hotmail.com">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/praneetsivakumar" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/Prani8" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn ghost" href="Praneet_Sivakumar_CV.pdf" download>CV</a>
+    </div>
+
+    <form class="cform" id="cform" novalidate>
+      <div class="cform-bar"><span>INSERT INTO messages</span><span class="cform-status" id="cform-status">ready</span></div>
+      <div class="cform-grid">
+        <label>name<input name="name" required maxlength="100" autocomplete="name" placeholder="Jane Smith"></label>
+        <label>email<input name="email" type="email" required maxlength="150" autocomplete="email" placeholder="jane@company.com"></label>
+        <label>company<input name="company" maxlength="120" autocomplete="organization" placeholder="Optional"></label>
+        <label>reason
+          <select name="reason">
+            <option>Job opportunity</option><option>Interview request</option><option>Project or collaboration</option><option>Just saying hello</option>
+          </select>
+        </label>
+        <label class="full">message<textarea name="message" required maxlength="3000" rows="4" placeholder="Tell me about the role, the team or the data problem…"></textarea></label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      </div>
+      <button class="btn" type="submit">Send message →</button>
+      <p class="cform-msg" id="cform-msg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer><span>© 2026 Praneet Sivakumar</span></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

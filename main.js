@@ -173,8 +173,9 @@ window.addEventListener('load', () => {
   // hero photo zoom-out + wordmark drift
   const heroST = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
   gsap.to('.hero-photo img', { scale: 1, ease: 'none', scrollTrigger: heroST });
-  gsap.to('.wm-line:first-child .wm', { xPercent: -6, ease: 'none', scrollTrigger: { ...heroST } });
-  gsap.to('.wm-line:nth-child(2) .wm', { xPercent: 6, ease: 'none', scrollTrigger: { ...heroST } });
+  const drift = innerWidth < 700 ? 2 : 6; // small drift on phones so the surname never clips
+  gsap.to('.wm-line:first-child .wm', { xPercent: -drift, ease: 'none', scrollTrigger: { ...heroST } });
+  gsap.to('.wm-line:nth-child(2) .wm', { xPercent: drift, ease: 'none', scrollTrigger: { ...heroST } });
 
   // words come into focus as you read
   document.querySelectorAll('.focus-text').forEach(p => {

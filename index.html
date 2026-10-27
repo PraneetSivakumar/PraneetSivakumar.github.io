@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Praneet Sivakumar | Junior Data Analyst</title>
+<title>Praneet Sivakumar · Data Analyst</title>
 <meta name="description" content="Praneet Sivakumar, Data Analyst. From the retail shop floor to the data behind it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,30 +15,21 @@
 <div class="loader" id="loader"><span>SELECT * FROM praneet;</span></div>
 
 <header class="topbar">
-  <a href="#top" class="brand">Praneet Sivakumar<span>.</span></a>
+  <a href="#top" class="brand">Praneet S<span>.</span></a>
   <div class="clock"><span id="clock">--</span> · Hatfield, UK</div>
   <nav class="menu">
     <a href="#story">Story</a><a href="#console">Console</a><a href="#work">Work</a><a href="#desk">Desk</a><a href="#contact">Contact</a>
   </nav>
-  <a class="cv-pill" href="Praneet_Sivakumar_CV.pdf" download>Download CV</a>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-bg" aria-hidden="true"><div class="hero-bg-in" id="hero-bg"></div></div>
   <h1 class="wordmark" aria-label="Praneet Sivakumar">
     <span class="wm-line"><span class="wm">PRANEET</span></span>
     <span class="wm-line"><span class="wm">SIVAKUMAR</span></span>
   </h1>
   <div class="hero-grid">
-    <div class="hero-left">
-      <p class="two-tone hero-line"><b>Data Analyst</b> turning shop-floor reality into <b>numbers you can trust.</b></p>
-      <ul class="chips">
-        <li><a class="chip" href="#work"><b>~30%</b> faster reporting<small>Power BI dashboard · Atheon</small></a></li>
-        <li><a class="chip" href="#case2"><b>1.6×</b> payday spend<small>The Real Price · simulated data</small></a></li>
-        <li><a class="chip" href="#work"><b>6 months</b> of live SQL<small>Data Analyst Intern · Atheon</small></a></li>
-      </ul>
-    </div>
+    <p class="two-tone hero-line"><b>Data Analyst</b> turning shop-floor reality into <b>numbers you can trust.</b></p>
     <figure class="hero-photo"><img src="images/hero.jpg" alt="Portrait of Praneet Sivakumar" loading="eager"></figure>
     <div class="hero-side">
       <p>MSc Data Science<br><b>Distinction</b></p>
@@ -59,32 +50,23 @@
 </section>
 
 <!-- CHAPTER 2 -->
-<section class="chapter" id="receipt-ch">
+<section class="chapter">
   <div class="ch-head"><span class="ch-num">02</span><span class="ch-title">The second story</span></div>
   <div class="ch-grid reverse">
-    <div class="receipt" id="receipt" role="group" aria-label="A shop receipt with one wrong line. Select the line you think is wrong.">
-      <div class="r-top">
-        <div class="receipt-head">STORE #0423 · HATFIELD<br>17:04 · TILL 3</div>
-        <button class="r-row r-item" type="button" data-line="1"><span>Croissant x6</span><span>4.50</span></button>
-        <button class="r-row r-item" type="button" data-line="2" data-dup="1"><span>Shampoo <em>17:04:11</em></span><span>3.20</span></button>
-        <button class="r-row r-item" type="button" data-line="3" data-dup="1"><span>Shampoo <em>17:04:11</em></span><span>3.20</span><span class="stamp" aria-hidden="true">DUPLICATE</span></button>
-        <button class="r-row r-item" type="button" data-line="4"><span>Milk 4pt</span><span>1.65</span></button>
-        <div class="r-row r-count"><span>ITEMS IN BAG</span><span>3</span></div>
-        <div class="r-row r-count"><span>ITEMS CHARGED</span><span id="r-charged">4</span></div>
-        <div class="r-row r-total"><span>TOTAL CHARGED</span><span><span id="r-total">12.55</span><i class="tick" aria-hidden="true">✓</i></span></div>
-        <div class="r-cut"><span>THE SECOND STORY</span></div>
-      </div>
-      <div class="r-bottom">
-        <div class="r-row data"><span>cancel_rate</span><span id="r-cancel" data-to="7.5">7.5%</span></div>
-        <div class="r-row data"><span>top_category</span><span>Health &amp; Beauty</span></div>
-        <div class="r-row data"><span>recommendation</span><span>fix stock first</span></div>
-      </div>
+    <div class="receipt" aria-label="Illustrated receipt">
+      <div class="receipt-head">STORE #0423 · HATFIELD<br>17:04 · TILL 3</div>
+      <div class="r-row"><span>Croissant x6</span><span>OUT OF STOCK</span></div>
+      <div class="r-row"><span>Online order #4471</span><span class="warn">CANCELLED</span></div>
+      <div class="r-row"><span>Substitution: shampoo</span><span>REFUND</span></div>
+      <div class="r-row"><span>Queue at till</span><span>9 people</span></div>
+      <div class="r-cut"><span>THE SECOND STORY</span></div>
+      <div class="r-row data"><span>cancel_rate</span><span>7.5%</span></div>
+      <div class="r-row data"><span>top_category</span><span>Health &amp; Beauty</span></div>
+      <div class="r-row data"><span>recommendation</span><span>fix stock first</span></div>
     </div>
-    <div class="r-copy">
+    <div>
       <p class="focus-text">Every receipt tells two stories. One is what the customer bought. The other is everything that went right or wrong to get it there. I learned to read the second one.</p>
       <p class="body">An <b>MSc in Data Science with Distinction</b>, earned while working shifts. Then a six-month internship at <b>Atheon Analytics</b>, writing SQL on a live database and reconciling the sales, revenue and cost figures the business reported on.</p>
-      <p class="r-hint"><i></i> One line on this receipt is wrong. <b>Can you find it?</b></p>
-      <p class="r-msg" id="r-msg" role="status" aria-live="polite"></p>
     </div>
   </div>
 </section>
@@ -110,37 +92,16 @@
 <!-- CONSOLE -->
 <section class="chapter" id="console">
   <div class="ch-head"><span class="ch-num">04</span><span class="ch-title">Ask my data</span></div>
-  <p class="lede">Don't take my word for it. Pick a dataset, click a question, and see the SQL, the answer and why it matters.</p>
+  <p class="lede">Don't take my word for it. Click a question and run the query on my retail project (sample retail dataset, 15,000+ rows).</p>
   <div class="console">
-    <div class="console-bar"><i></i><i></i><i></i><span id="console-file">praneet@analytics: ~/retail_orders.sql</span></div>
-    <div class="console-sets" role="group" aria-label="Choose a dataset">
-      <button type="button" data-set="retail" aria-pressed="true">Retail orders</button>
-      <button type="button" data-set="spend" aria-pressed="false">My spending <em>simulated</em></button>
-      <a class="console-fit" href="#fit">★ Check my fit for your job</a>
+    <div class="console-bar"><i></i><i></i><i></i><span>praneet@analytics: ~/retail_orders.sql</span></div>
+    <div class="console-q">
+      <button data-q="0">Why are orders cancelled?</button>
+      <button data-q="1">Do loyalty members spend more?</button>
+      <button data-q="2">When is the peak?</button>
+      <button data-q="3">Who is Praneet?</button>
     </div>
-    <div class="console-q" id="console-q" role="group" aria-label="Questions"></div>
     <pre class="console-out" id="console-out"><span class="muted">-- pick a question above to run a query</span></pre>
-    <div class="console-chart" id="console-chart" aria-hidden="true"></div>
-    <p class="console-why" id="console-why" role="status"></p>
-    <p class="console-note" id="console-note"></p>
-  </div>
-
-  <div class="fit" id="fit">
-    <h3>Check my fit for your job</h3>
-    <p class="fit-lede">Paste a job description. I'll show where I'm strong, where I'm still learning and where I'm not there yet. <b>It runs in your browser: your text is not sent anywhere or stored.</b></p>
-    <div class="fit-form">
-      <label class="fit-label" for="fit-role">Job title (optional)</label>
-      <input id="fit-role" type="text" maxlength="80" placeholder="e.g. Data Analyst" autocomplete="off">
-      <label class="fit-label" for="fit-text">Job description</label>
-      <textarea id="fit-text" rows="7" placeholder="Paste the job description here…"></textarea>
-      <div class="fit-btns">
-        <button type="button" class="btn" id="fit-run">Check my fit</button>
-        <button type="button" class="btn ghost" id="fit-example">Try an example</button>
-        <button type="button" class="fit-clear" id="fit-clear">Clear</button>
-      </div>
-    </div>
-    <div id="fit-out" class="fit-out"></div>
-    <p class="sr-only" id="fit-msg" role="status" aria-live="polite"></p>
   </div>
 </section>
 
@@ -275,8 +236,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="main.js"></script>
-<script src="receipt.js"></script>
-<script src="console.js"></script>
-<script src="fit.js"></script>
 </body>
 </html>

@@ -84,6 +84,37 @@ const fixState = { v: 0 };
   })();
 })();
 
+/* ---------- SQL console ---------- */
+const Q = [
+  { sql: `<span class="kw">SELECT</span> category, <span class="fn">ROUND</span>(<span class="fn">AVG</span>(is_cancelled)*100, 1) <span class="kw">AS</span> cancel_rate\n<span class="kw">FROM</span> orders <span class="kw">GROUP BY</span> category\n<span class="kw">ORDER BY</span> cancel_rate <span class="kw">DESC LIMIT</span> 1;`,
+    out: `category          | cancel_rate\n------------------+------------\n<span class="hl">Health &amp; Beauty   | 10.0%</span>\n\n<span class="ok">✔ Insight:</span> overall 7.5% (1 in 13 orders). Health &amp; Beauty is the outlier.\n<span class="ok">✔ Action:</span> fix stock accuracy there first.` },
+  { sql: `<span class="kw">SELECT</span> is_loyalty_member, <span class="fn">AVG</span>(order_value) <span class="kw">AS</span> avg_basket\n<span class="kw">FROM</span> orders <span class="kw">GROUP BY</span> is_loyalty_member;`,
+    out: `is_loyalty_member | avg_basket\n------------------+-----------\nfalse             | baseline\n<span class="hl">true              | +8%</span>\n\n<span class="ok">✔ Insight:</span> loyalty-card members spend 8% more per order.\n<span class="ok">✔ Action:</span> target sign-ups at the till.` },
+  { sql: `<span class="kw">SELECT</span> month, revenue / <span class="fn">AVG</span>(revenue) <span class="kw">OVER</span> () - 1 <span class="kw">AS</span> vs_avg\n<span class="kw">FROM</span> monthly_sales\n<span class="kw">ORDER BY</span> vs_avg <span class="kw">DESC LIMIT</span> 1;`,
+    out: `month | vs_avg\n------+-------\n<span class="hl">Dec   | +21%</span>\n\n<span class="ok">✔ Insight:</span> December trades 21% above the monthly average.\n<span class="ok">✔ Action:</span> build stock and time promotions before the peak.` },
+  { sql: `<span class="kw">SELECT</span> * <span class="kw">FROM</span> analysts <span class="kw">WHERE</span> name = 'Praneet Sivakumar';`,
+    out: `role         | Data Analyst (retail &amp; FMCG)\neducation    | MSc Data Science, <span class="hl">Distinction</span>\nexperience   | Atheon Analytics · Tesco · M&amp;S · ByVal\ntools        | SQL, Power BI, Python, Excel\nsuperpower   | <span class="hl">finds the wrong number before it reaches the report</span>\nstatus       | <span class="ok">open_to_work = TRUE</span>\n\n1 row returned.` }
+];
+const out = document.getElementById('console-out');
+let typing = null;
+document.querySelectorAll('.console-q button').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.console-q button').forEach(b => b.classList.toggle('on', b === btn));
+  const q = Q[+btn.dataset.q];
+  clearInterval(typing);
+  const plain = q.sql.replace(/<[^>]+>/g, '');
+  if (reduceMotion) { out.innerHTML = `> ${q.sql}\n\n${q.out}`; return; }
+  let i = 0;
+  typing = setInterval(() => {
+    i += 3;
+    out.textContent = '> ' + plain.slice(0, i);
+    if (i >= plain.length) {
+      clearInterval(typing);
+      out.innerHTML = `> ${q.sql}\n\n<span class="muted">running… 15,042 rows scanned</span>`;
+      setTimeout(() => { out.innerHTML = `> ${q.sql}\n\n${q.out}`; }, 500);
+    }
+  }, 16);
+}));
+
 /* ---------- contact form → Google Sheet + Gmail notification ---------- */
 // Paste your Apps Script web app URL here after deploying (see portfolio_setup/SETUP.md)
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwX-G4t8gguP0--PAd-2rb8nE5cFa9UDh4u54SzJUAVAMgcGUqTfrH6PqNyhgDO3KxV4w/exec';
@@ -127,35 +158,16 @@ function setFix(v) {
   hint.innerHTML = done ? '<i></i> Fixed. <b>That\'s what I do.</b>' : '<i></i> One bar is wrong. <b>Keep scrolling to fix it.</b>';
 }
 
-(function fillHeroBg() {
-  const el = document.getElementById('hero-bg');
-  if (!el) return;
-  let s = 7, rows = [];
-  const next = () => (s = (s * 9301 + 49297) % 233280) / 233280;
-  for (let r = 0; r < 30; r++) {
-    let line = '';
-    for (let i = 0; i < 40; i++) line += (next() * 99).toFixed(2).padStart(6, ' ') + '   ';
-    rows.push(line);
-  }
-  el.textContent = rows.join('\n');
-  el.style.whiteSpace = 'pre';
-})();
-
 window.addEventListener('load', () => {
   const loader = document.getElementById('loader');
   if (!hasGsap || reduceMotion) { loader.remove(); setFix(1); return; }
   gsap.registerPlugin(ScrollTrigger);
 
   // intro: loader out, wordmark slides up, photo reveals
-  // loader shows on the first visit of a session only
-  let seen = false;
-  try { seen = sessionStorage.getItem('seen') === '1'; sessionStorage.setItem('seen', '1'); } catch (e) {}
-  if (seen) loader.remove();
   const tl = gsap.timeline();
-  tl.to(loader, { yPercent: -100, duration: 0.6, ease: 'power4.inOut', delay: seen ? 0 : 0.5, onComplete: () => loader.remove() })
+  tl.to(loader, { yPercent: -100, duration: 0.8, ease: 'power4.inOut', delay: 0.6, onComplete: () => loader.remove() })
     .from('.wm', { yPercent: 110, duration: 1.1, stagger: 0.12, ease: 'power4.out' }, '-=0.3')
     .from('.hero-line, .hero-side', { opacity: 0, y: 30, duration: 0.8, stagger: 0.1 }, '-=0.6')
-    .from('.chip', { opacity: 0, y: 14, duration: 0.5, stagger: 0.08 }, '+=0.1')
     .from('.hero-photo', { clipPath: 'inset(100% 0 0 0)', duration: 1.1, ease: 'power3.out' }, '-=0.9');
 
   // hero photo zoom-out + wordmark drift
@@ -164,25 +176,8 @@ window.addEventListener('load', () => {
   gsap.to('.wm-line:first-child .wm', { xPercent: -6, ease: 'none', scrollTrigger: { ...heroST } });
   gsap.to('.wm-line:nth-child(2) .wm', { xPercent: 6, ease: 'none', scrollTrigger: { ...heroST } });
 
-  // depth parallax: each layer drifts at its own speed (20% strength on phones)
-  const k = window.innerWidth <= 960 ? 0.2 : 1;
-  gsap.to('.hero-bg-in', { y: -40 * k, ease: 'none', scrollTrigger: heroST });
-  gsap.to('.wordmark', { y: -120 * k, ease: 'none', scrollTrigger: heroST });
-  gsap.to('.hero-photo', { y: -220 * k, ease: 'none', scrollTrigger: heroST });
-  gsap.to('.hero-left', { y: -60 * k, ease: 'none', scrollTrigger: heroST });
-
-  // desktop only: the photo card tilts up to 3 degrees toward the cursor
-  if (window.matchMedia('(hover: hover) and (min-width: 961px)').matches) {
-    const rx = gsap.quickTo('.hero-photo', 'rotationX', { duration: 0.6, ease: 'power3' });
-    const ry = gsap.quickTo('.hero-photo', 'rotationY', { duration: 0.6, ease: 'power3' });
-    window.addEventListener('mousemove', e => {
-      ry((e.clientX / window.innerWidth - 0.5) * 6);
-      rx(-(e.clientY / window.innerHeight - 0.5) * 6);
-    });
-  }
-
   // words come into focus as you read
-  document.querySelectorAll('.focus-text:not(#receipt-ch .focus-text)').forEach(p => {
+  document.querySelectorAll('.focus-text').forEach(p => {
     gsap.to(p.querySelectorAll('.w'), { opacity: 1, filter: 'blur(0px)', stagger: 0.05, ease: 'none',
       scrollTrigger: { trigger: p, start: 'top 85%', end: 'bottom 55%', scrub: true } });
   });
@@ -191,6 +186,8 @@ window.addEventListener('load', () => {
     gsap.to(img, { scale: 1, ease: 'none', scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
+  // receipt prints line by line
+  gsap.from('.r-row, .r-cut', { opacity: 0, x: -14, stagger: 0.12, duration: 0.4, scrollTrigger: { trigger: '.receipt', start: 'top 75%' } });
 
   // the wrong number gets fixed as you scroll through chapter 3
   ScrollTrigger.create({ trigger: '#wrong', start: 'top 60%', end: 'bottom 70%', scrub: true, onUpdate: s => setFix(s.progress) });
